@@ -1,0 +1,88 @@
+Q1. How to compare two JSON have the same properties without order?
+    a.var obj1={name:"Person1",age:5};
+    b.var obj2={age:5,name:"Person1"};
+
+////Ans-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj1={
+            name:"Person 1",
+            age:5
+        }
+
+var obj2={        
+    age:5,
+    name:"Person 1"
+            
+        }
+
+        console.log(obj1)
+        console.log(obj2)
+        var t= JSON.stringify(obj1) === JSON.stringify(obj2);//false
+        console.log(t)
+    </script>
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2. Use the rest countries API URL- 
+    and display all the coutry flag in the console
+    Use the same rest countries and print all coutries name, region, subregion and population
+///Ans---->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var req=new XMLHttpRequest();
+req.open('GET','https://restcountries.com/v3.1/all')
+
+req.send()
+
+req.onload=function(){
+var api=req.response
+var t= JSON.parse(api)
+console.log(t)
+//<--------to print country flag---------------->
+// for(var i=0;i<t.length;i++)
+// console.log(t[i].flags)
+
+//<----------------to print country name----------------->
+// for(var s of t)
+// console.log(s.name)
+
+//<--------------to print region--------------------->
+// for(var index in t)
+// console.log(t[index].region)
+
+//<------------------to prnt subregion--------------------->
+// for(var index in t)
+// console.log(t[index].subregion)
+
+//<-----------------to print popoulation---------------------->
+for(var s of t)
+console.log(s.population)
+
+}
+  </script>
+    
+</body>
+</html>
+
+
+
